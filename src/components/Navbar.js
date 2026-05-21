@@ -23,6 +23,7 @@ function Navbar() {
             </Link>
             <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                 <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Products</Link>
+                <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>Cart</Link>
                 {user ? (
                     <>
                         <span style={{ color: 'white' }}>Hi, {user.name}</span>

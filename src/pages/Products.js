@@ -21,6 +21,15 @@ function Products() {
         }
     };
 
+    const addToCart = async (product_id) => {
+        try {
+            await API.post('/cart', { product_id, quantity: 1 });
+            alert('Added to cart!');
+        } catch (err) {
+            alert(err.response?.data?.message || 'Error adding to cart');
+        }
+    };
+
     const handleSearch = (e) => {
         setSearch(e.target.value);
         fetchProducts(e.target.value);
@@ -55,6 +64,12 @@ function Products() {
                             <h4>{product.name}</h4>
                             <p>${product.price}</p>
                             <p style={{ color: 'gray', fontSize: '12px' }}>{product.category_name}</p>
+                            <button
+                                onClick={() => addToCart(product.id)}
+                                style={{ width: '100%', padding: '8px', background: 'blue', color: 'white', border: 'none', cursor: 'pointer', marginTop: '10px' }}
+                            >
+                                Add to Cart
+                            </button>
                         </div>
                     ))}
                 </div>
