@@ -24,9 +24,10 @@ function Navbar() {
             <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                 <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Products</Link>
                 <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>Cart</Link>
+                <Link to="/orders" style={{ color: 'white', textDecoration: 'none' }}>Orders</Link>
                 {user ? (
                     <>
-                        <span style={{ color: 'white' }}>Hi, {user.name}</span>
+                        <Link to="/profile" style={{ color: 'white', textDecoration: 'none' }}>Hi, {user.name}</Link>
                         {user.role === 'admin' && (
                             <Link to="/admin" style={{ color: 'yellow', textDecoration: 'none' }}>Admin</Link>
                         )}
