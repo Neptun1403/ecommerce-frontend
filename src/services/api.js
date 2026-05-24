@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://ecommerce-api-production-2ab9.up.railway.app'
 });
-
 // Add token to every request automatically
 API.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
