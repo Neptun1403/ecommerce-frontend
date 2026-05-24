@@ -10,8 +10,8 @@ function ProductDetail() {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
     fetchProduct();
 }, []);
 
