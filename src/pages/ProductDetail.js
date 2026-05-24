@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import API from '../services/api';
 import { useAuth } from '../context/AuthContext';
@@ -10,12 +10,7 @@ function ProductDetail() {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-useEffect(() => {
-    fetchProduct();
-}, []);
-
-    const fetchProduct = async () => {
+    const fetchProduct = useCallback(async () => {
         try {
             const res = await API.get(`/products/${id}`);
             setProduct(res.data);
@@ -24,7 +19,11 @@ useEffect(() => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [id]);
+
+    useEffect(() => {
+        fetchProduct();
+    }, [fetchProduct]);
 
     const addToCart = async () => {
         if (!user) {
