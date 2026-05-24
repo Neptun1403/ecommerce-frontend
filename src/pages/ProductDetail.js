@@ -11,8 +11,9 @@ function ProductDetail() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchProduct();
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchProduct();
+}, []);
 
     const fetchProduct = async () => {
         try {
